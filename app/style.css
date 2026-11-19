@@ -1,0 +1,107 @@
+/* Neon Coast Cover Studio — editor styling. Dark neon theme, Anton headings,
+   Pacifico for the script accents. Fonts are vendored under app/fonts/. */
+@font-face {
+  font-family: 'Anton';
+  src: url('./fonts/Anton-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Pacifico';
+  src: url('./fonts/Pacifico-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; }
+body {
+  background: #0d0716;
+  color: #f2eef8;
+  font: 15px/1.45 system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+.topbar {
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  padding: 18px 28px;
+  background: linear-gradient(90deg, #160a24, #2b0f3d 55%, #0d2b3a);
+  border-bottom: 2px solid #ff2e88;
+}
+.brand h1 {
+  margin: 0; font-family: Anton, sans-serif; font-weight: 400;
+  font-size: 30px; letter-spacing: 2px; text-transform: uppercase; color: #fff;
+}
+.brand h1 span { color: #22d3ee; }
+.brand p { margin: 2px 0 0; color: #c9b8de; font-size: 13px; }
+.history { display: flex; gap: 8px; }
+.studio { display: flex; gap: 28px; padding: 24px 28px; align-items: flex-start; }
+.controls { width: 320px; flex: none; display: flex; flex-direction: column; gap: 14px; }
+.panel {
+  background: #1a1026; border: 1px solid #3a2350; border-radius: 12px; padding: 14px 16px;
+}
+.panel h2 {
+  margin: 0 0 10px; font-family: Anton, sans-serif; font-weight: 400;
+  font-size: 15px; letter-spacing: 2px; text-transform: uppercase; color: #ff7ab8;
+}
+.panel label { display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: 13px; margin-bottom: 10px; }
+.panel label:last-child { margin-bottom: 0; }
+.hint { margin: 4px 0 0; color: #a894c4; font-size: 12px; font-weight: 400; }
+input[type=text], select {
+  font: inherit; padding: 9px 10px; color: #f2eef8;
+  background: #0d0716; border: 1px solid #4a2d68; border-radius: 8px;
+}
+input[type=text]:focus, select:focus { outline: 2px solid #ff2e88; outline-offset: 1px; }
+input[type=file] { font: inherit; font-size: 13px; }
+input[type=range] { width: 100%; accent-color: #ff2e88; }
+.check { flex-direction: row !important; align-items: center; gap: 8px !important; font-weight: 400 !important; }
+.check input { accent-color: #ff2e88; width: 16px; height: 16px; }
+button {
+  font: inherit; font-weight: 700; padding: 10px 12px; border: 0; border-radius: 8px;
+  background: #2b1740; color: #f2eef8; cursor: pointer;
+}
+button:hover:not(:disabled) { background: #3d2358; }
+button:disabled { opacity: 0.45; cursor: default; }
+button.primary { background: linear-gradient(90deg, #ff2e88, #ff7a18); color: #fff; }
+button.primary:hover { filter: brightness(1.12); }
+button.ghost { background: transparent; border: 1px solid #4a2d68; font-weight: 600; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips button { padding: 8px 10px; font-size: 13px; }
+.chips button.active, .swatch.active { outline: 2px solid #22d3ee; outline-offset: 1px; }
+.swatches { display: flex; flex-wrap: wrap; gap: 8px; }
+.swatch {
+  position: relative; width: 88px; height: 52px; padding: 0;
+  border-radius: 8px; overflow: hidden;
+}
+.swatch span {
+  position: absolute; inset: auto 0 0 0; padding: 3px 4px;
+  background: rgba(0, 0, 0, 0.55); font-size: 11px; font-weight: 600; text-align: center;
+}
+.strip { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+.thumb { padding: 0; border: 2px solid #4a2d68; border-radius: 8px; overflow: hidden; background: none; }
+.thumb img { display: block; width: 64px; height: 64px; object-fit: cover; }
+.thumb:hover { border-color: #ff2e88; }
+.row { display: flex; gap: 8px; }
+.row button { flex: 1; }
+.export button { display: block; width: 100%; margin-bottom: 8px; }
+.export button:last-of-type { margin-bottom: 4px; }
+.stage { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+#preview {
+  max-width: 100%; max-height: calc(100vh - 190px); height: auto;
+  border-radius: 6px; box-shadow: 0 18px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px #3a2350;
+  background: #14081f;
+}
+.stage-hint { margin: 0; color: #a894c4; font-size: 13px; }
+.foot { padding: 0 28px 24px; color: #7d6b96; font-size: 12px; max-width: 1100px; }
+
+/* Shot scenes: the cover fills the whole viewport, controls hidden. */
+body.shot-cover .topbar, body.shot-cover .controls, body.shot-cover .foot,
+body.shot-cover .stage-hint { display: none; }
+
+/* Editor shot: compact chrome so more controls fit in a 720 px frame. */
+body.shot-editor .foot { display: none; }
+body.shot-editor .topbar { padding: 10px 28px; }
+body.shot-editor .studio { padding: 16px 28px; gap: 20px; }
+body.shot-editor .panel { padding: 10px 14px; }
+body.shot-cover .studio { padding: 0; }
+body.shot-cover .stage { display: block; }
+body.shot-cover #preview {
+  width: 100vw; height: 100vh; max-width: none; max-height: none;
+  border-radius: 0; box-shadow: none;
+}
